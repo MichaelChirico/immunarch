@@ -121,11 +121,11 @@ seqCluster <- function(.data, .dist, .perc_similarity, .nt_similarity, .fixed_th
       apply(., 1, function(x, t) {
         ifelse(x > t, NA, x)
       }, .y))
-    seq_clusters <- map(mat_dist, ~ melt(.x, na.rm = TRUE) %>%
+    seq_clusters <- map(mat_dist, ~ reshape2::melt(.x, na.rm = TRUE) %>%
       graph_from_data_frame() %>%
       clusters() %>%
       .$membership %>%
-      melt() %>%
+      reshape2::melt() %>%
       suppressWarnings())
     result_multi <- seq_clusters %>%
       map2(., seq_length[!singleseq_flag], ~ .x %>%

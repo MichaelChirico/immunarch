@@ -11,7 +11,7 @@ vis_results <- function(res_list, ...) {
 }
 
 check_for_mutation <- function(.frame, .table) {
-  expect_equal(lapply(.frame, as.data.table), .table)
+  expect_equal(lapply(.frame, data.table::as.data.table), .table)
 }
 
 # add pretfix
@@ -37,4 +37,4 @@ add_mock_sample <- function(.immdata, .sample_name, .meta = list(), .empty = FAL
 
 data(immdata)
 frame_data <- immdata$data
-table_data <- lapply(frame_data, as.data.table)
+table_data <- lapply(frame_data, data.table::as.data.table)

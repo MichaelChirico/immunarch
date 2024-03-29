@@ -2902,7 +2902,7 @@ vis.immunr_dynamics <- function(.data, .plot = c("smooth", "area", "line"), .ord
   }
 
   y_lab_title <- "Count"
-  melted <- melt(.data) %>%
+  melted <- reshape2::melt(.data) %>%
     lazy_dt() %>%
     rename(Count = value, Sample = variable) %>%
     collect()

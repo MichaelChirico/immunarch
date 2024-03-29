@@ -1132,31 +1132,31 @@ parse_10x_filt_contigs <- function(.filename, .mode) {
     group_by_colnames("CDR3.nt.sorted", "V.name.sorted", "J.name.sorted") %>%
     summarise(
       Clones = length(unique(get("barcode"))),
-      CDR3.nt = first(get("CDR3.nt")),
-      CDR3.aa = first(get("CDR3.aa")),
-      V.name = first(get("V.name")),
-      D.name = first(get("D.name")),
-      J.name = first(get("J.name")),
-      chain = first(get("chain")),
+      CDR3.nt = dplyr::first(get("CDR3.nt")),
+      CDR3.aa = dplyr::first(get("CDR3.aa")),
+      V.name = dplyr::first(get("V.name")),
+      D.name = dplyr::first(get("D.name")),
+      J.name = dplyr::first(get("J.name")),
+      chain = dplyr::first(get("chain")),
       barcode = paste0(unique(get("barcode")), collapse = IMMCOL_ADD$scsep),
       raw_clonotype_id = gsub(
         "clonotype|None", "",
         paste0(unique(get("raw_clonotype_id")), collapse = IMMCOL_ADD$scsep)
       ),
       contig_id = paste0(get("contig_id"), collapse = IMMCOL_ADD$scsep),
-      c_gene = first(get("c_gene")),
-      CDR1.nt = first(get(IMMCOL_EXT$cdr1nt)),
-      CDR2.nt = first(get(IMMCOL_EXT$cdr2nt)),
-      CDR1.aa = first(get(IMMCOL_EXT$cdr1aa)),
-      CDR2.aa = first(get(IMMCOL_EXT$cdr2aa)),
-      FR1.nt = first(get(IMMCOL_EXT$fr1nt)),
-      FR2.nt = first(get(IMMCOL_EXT$fr2nt)),
-      FR3.nt = first(get(IMMCOL_EXT$fr3nt)),
-      FR4.nt = first(get(IMMCOL_EXT$fr4nt)),
-      FR1.aa = first(get(IMMCOL_EXT$fr1aa)),
-      FR2.aa = first(get(IMMCOL_EXT$fr2aa)),
-      FR3.aa = first(get(IMMCOL_EXT$fr3aa)),
-      FR4.aa = first(get(IMMCOL_EXT$fr4aa))
+      c_gene = dplyr::first(get("c_gene")),
+      CDR1.nt = dplyr::first(get(IMMCOL_EXT$cdr1nt)),
+      CDR2.nt = dplyr::first(get(IMMCOL_EXT$cdr2nt)),
+      CDR1.aa = dplyr::first(get(IMMCOL_EXT$cdr1aa)),
+      CDR2.aa = dplyr::first(get(IMMCOL_EXT$cdr2aa)),
+      FR1.nt = dplyr::first(get(IMMCOL_EXT$fr1nt)),
+      FR2.nt = dplyr::first(get(IMMCOL_EXT$fr2nt)),
+      FR3.nt = dplyr::first(get(IMMCOL_EXT$fr3nt)),
+      FR4.nt = dplyr::first(get(IMMCOL_EXT$fr4nt)),
+      FR1.aa = dplyr::first(get(IMMCOL_EXT$fr1aa)),
+      FR2.aa = dplyr::first(get(IMMCOL_EXT$fr2aa)),
+      FR3.aa = dplyr::first(get(IMMCOL_EXT$fr3aa)),
+      FR4.aa = dplyr::first(get(IMMCOL_EXT$fr4aa))
     ) %>%
     as.data.table() %>%
     subset(

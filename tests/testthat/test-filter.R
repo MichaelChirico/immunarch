@@ -270,7 +270,7 @@ for (i in seq_along(test_cases)) {
   test_name <- paste0("method:", method, ".case:", i)
   immdata <- data_factory()
   frame_with_meta <- immdata
-  table_with_meta <- list(data = lapply(immdata$data, as.data.table), meta = immdata$meta)
+  table_with_meta <- list(data = lapply(immdata$data, data.table::as.data.table), meta = immdata$meta)
 
   # Act
   if (is.null(match)) {
@@ -294,6 +294,6 @@ for (i in seq_along(test_cases)) {
       expected_rows <- expected_sample_rows[[j]]
       expect_equal(compute_res[[1]]$data[[sample_name]] %>% nrow(), expected_rows)
     }
-    expect_equal(lapply(compute_res[[1]]$data, as.data.table), compute_res[[2]]$data)
+    expect_equal(lapply(compute_res[[1]]$data, data.table::as.data.table), compute_res[[2]]$data)
   })
 }
